@@ -1,0 +1,16 @@
+#Name: Crowler;
+#UnitType: 0;
+#Supt.Range: 0;
+#Life: 100;
+#WeaponType: 2;
+#ArmorType: 0;
+#Damage: 5;
+#Atk.Speed: 2.3;
+#Atk.Range: 2;
+#Move: 3;
+#FightMove: 6;
+#Abilities: null;
+#CreateRes: 50;
+#Supply: 2;
+#Weight: 40;
+#Buy: 500;

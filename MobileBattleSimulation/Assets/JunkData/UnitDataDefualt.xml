@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Map name="" Maptype="" width="" height="">
+  <Scenario></Scenario>
+  <Missions></Missions>
+  <Tile>
+    <set width="" height="" type="" grade=""/>
+  </Tile>
+  <UnitBatch>
+    <EnableCotled>
+      <Unit nmae="" type="" grade=""/>
+    </EnableCotled>
+    <Force name="" type="" Alienced="">
+    </Force>
+  </UnitBatch>
+</Map>

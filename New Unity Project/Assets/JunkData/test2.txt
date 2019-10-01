@@ -1,0 +1,16 @@
+#Name: Favalr;
+#UnitType: 2;
+#Supt.Range: 1;
+#Life: 60;
+#WeaponType: 1;
+#ArmorType: 2;
+#Damage: 2;
+#Atk.Speed: 4.4;
+#Atk.Range: 0;
+#Move: 0;
+#FightMove: 2;
+#Abilities: null;
+#CreateRes: 60;
+#Supply: 8;
+#Weight: 45;
+#Buy: 1000;

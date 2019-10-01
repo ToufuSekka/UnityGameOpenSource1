@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/Start.unity
+    guid: e5f302edbe303c94b878d19c733d8f33
+  - enabled: 1
+    path: Assets/Scene/Main.unity
+    guid: fbc94374d55371d458e176faa76356b3
+  - enabled: 1
+    path: Assets/Scene/Main/Bar.unity
+    guid: 8a6ac5cf9095af4499557797847695d7
+  - enabled: 1
+    path: Assets/Scene/Main/Battle.unity
+    guid: 4685d8742615ce44baf0e9c42b2625b0
+  - enabled: 1
+    path: Assets/Scene/Main/Event.unity
+    guid: 4e48ec75a3ae07144aafb0ea4d0ed0b2
+  - enabled: 1
+    path: Assets/Scene/Main/Hero_Admin.unity
+    guid: a30ebcd0b06506f4fa137dab90b0ae0a
+  - enabled: 1
+    path: Assets/Scene/Main/Munitions.unity
+    guid: d13497d158a6d2d428646dc7f1f9e324
+  - enabled: 1
+    path: Assets/Scene/Main/Unit_Admin.unity
+    guid: a37bae93142497140bf9e51768cfeb76
+  - enabled: 1
+    path: Assets/Scene/Main/Unit_Admin/UnitInformator.unity
+    guid: 91f9953a33c414142ac4d491b0c39c5b
+  - enabled: 1
+    path: Assets/Scene/Main/Unit_Admin/Squad.unity
+    guid: fa1537a787d6c2a4fb188c2a925f2a4d
+  m_configObjects: {}

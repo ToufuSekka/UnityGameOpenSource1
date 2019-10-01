@@ -1,0 +1,16 @@
+#Name: Alrern;
+#UnitType: 1;
+#Supt.Range: 0;
+#Life: 333;
+#WeaponType: 2;
+#ArmorType: 0;
+#Damage: 15;
+#Atk.Speed: 2.3;
+#Atk.Range: 4;
+#Move: 6;
+#FightMove: 4;
+#Abilities: null;
+#CreateRes: 80;
+#Supply: 3;
+#Weight: 65;
+#Buy: 1250;
