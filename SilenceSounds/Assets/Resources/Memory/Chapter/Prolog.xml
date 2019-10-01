@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Datas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Chapter Name="만남" Preimg="x" Preview="&quot;이걸로 모든것이 변하였다.&quot;"/>
+	<Line Number="1" Type="image" locked="Auto">
+		<Description>BG;ClonenRoom001_Night.png;FadeIn</Description>
+	</Line>
+	<Line Number="2" Type="sound" locked="Auto">
+		<Description>GlassBroken.wav;Noloop</Description>
+	</Line>
+	<Line Number="3" Type="logger" locked="Auto">
+		<Description>???;너 또 개 지랄이네 씨발. 그래, 이번엔 뭐!</Description>
+	</Line>
+	<Line Number="4" Type="logger" locked="Auto">
+		<Description>;방 밖에서부터 유리 같은 것이 깨지는 소리와 욕 짓거리가 함께 조화를 이뤄 내 귀를 때린다.</Description>
+	</Line>
+	<Line Number="5" Type="logger" locked="Auto">
+		<Description>;학교교과에 관련 되 있는 공부는 아니지만, 적어도 나에게 있어서 중요한 것에 대한 공부를 하는대에 이만한 방해는 없을것이다.</Description>
+	</Line>
+	<Line Number="6" Type="logger" locked="Auto">
+		<Description>;남들이라면, 분명 이 상황을 타개하기 위한 여러 조치를 취하겠지만, 나는 애써 무시한다</Description>
+	</Line>
+	<Line Number="7" Type="logger" locked="Auto">
+		<Description>;약하기 때문에, 말린다고 끼어들어봤자, 저들의 좋은 먹기감만 될뿐이니까.</Description>
+	</Line>
+	<Line Number="8" Type="logger" locked="Auto">
+		<Description>???;내가 왜 니 같은 년하고 사는대 왜!</Description>
+	</Line>
+	<Line Number="9" Type="logger" locked="Auto">
+		<Description>???;애미 씨발, 그게 니가 할소리냐?</Description>
+	</Line>
+	<Line Number="10" Type="logger" locked="Auto">
+		<Description>;그렇게 무시할수록, 그들의 소리는 더욱 격화되어 나의 모든 집중을 망쳐놓는다.</Description>
+	</Line>
+	<Line Number="11" Type="logger" locked="Auto">
+		<Description>;참을 수 있을대로 참다가, 하는 짓이라곤, 모든일을 다 내팽개치고 배게에 귀를 막고 얼굴을 묻은체 침대에 눕는 것.</Description>
+	</Line>
+  <Line Number="12" Type="WordClear" locked="Auto">
+    <Description></Description>
+  </Line>
+	<Line Number="13" Type="image" locked="Auto">
+		<Description>BG;BlackMono.png;CrossFade</Description>
+	</Line>
+	<Line Number="14" Type="image" locked="Auto">
+		<Description>BG;ClonenRoom001_Morning.png;CrossFade</Description>
+	</Line>
+</Datas>
