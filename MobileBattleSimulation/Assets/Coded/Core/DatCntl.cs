@@ -12,39 +12,41 @@ public class DatCntl : MonoBehaviour{
     XmlDocument XmlDoc = new XmlDocument();
     XmlNode XmlNO = null;
     List<object> Datas = new List<object>();
+    Hashtable table = new Hashtable();
 
-    public List<object> Viewing(string PageType) {
-        Object go, go2;
+    public List<object> NormalUnitView() {
 
-        switch (PageType) {
-            default:
-                di = new DirectoryInfo(Application.dataPath + "/Resources/UnitData/NormalUnitData");
-                foreach (FileInfo Fi in di.GetFiles("*.xml")) {
-                    TA = (TextAsset)Resources.Load("UnitData/NormalUnitData/" + Fi.Name.Replace(".xml", null));
-                    XmlDoc.LoadXml(TA.text);
-                    XmlNO = XmlDoc.SelectNodes("UnitData")[0];
-                    Datas.Add(XmlNO.SelectSingleNode("BaseData").Attributes["Name"].InnerText);
-                }
-                break;
+        di = new DirectoryInfo(Application.dataPath + "/Resources/UnitData/NormalUnitData");
+        foreach (FileInfo Fi in di.GetFiles("*.xml"))
+        {
+            string[] data = new string[2];
+            data[0] = Fi.Name.Replace(".xml", null);
+            TA = (TextAsset)Resources.Load("UnitData/NormalUnitData/" + data[0]);
+            XmlDoc.LoadXml(TA.text);
+            XmlNO = XmlDoc.SelectNodes("UnitData")[0];
+
+            data[1] = XmlNO.SelectSingleNode("BaseData").Attributes["Name"].InnerText;
+            Datas.Add(data);
         }
         Debug.Log(" Bring_Ends");
         return this.Datas;
     }
 
-    public List<int> UnitViews(string PageType) {
-        List<int> returner = new List<int>();
-        switch (PageType) {
-            default:
-                di = new DirectoryInfo(Application.dataPath + "/Resources/UnitData/NormalUnitData");
-                foreach (FileInfo Fi in di.GetFiles("*.xml")) {
-                    TA = (TextAsset)Resources.Load("UnitData/NormalUnitData/" + Fi.Name.Replace(".xml", null));
-                    XmlDoc.LoadXml(TA.text);
-                    XmlNO = XmlDoc.SelectNodes("UnitData")[0];
-                    Debug.Log(XmlNO.SelectSingleNode("BaseData").Attributes["Name"].InnerText);
-                }
-                Debug.Log(" Bring_Ends");
-                break;
+    protected List<object> Normal_Specific()
+    {
+        di = new DirectoryInfo(Application.dataPath + "/Resources/UnitData/NormalUnitData");
+        foreach (FileInfo Fi in di.GetFiles("*.xml"))
+        {
+            string[] data = new string[2];
+            data[0] = Fi.Name.Replace(".xml", null);
+            TA = (TextAsset)Resources.Load("UnitData/NormalUnitData/" + data[0]);
+            XmlDoc.LoadXml(TA.text);
+            XmlNO = XmlDoc.SelectNodes("UnitData")[0];
+
+            data[1] = XmlNO.SelectSingleNode("BaseData").Attributes["Name"].InnerText;
+            Datas.Add(data);
         }
-        return returner;
+        Debug.Log(" Bring_Ends");
+        return this.Datas;
     }
 }

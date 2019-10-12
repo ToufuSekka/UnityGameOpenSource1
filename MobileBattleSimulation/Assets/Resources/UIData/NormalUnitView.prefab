@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5734818071553222759}
   - component: {fileID: 7424963117797229773}
   - component: {fileID: 3176030751580760657}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7926283295268667564}
   - component: {fileID: 8273952985409445823}
   - component: {fileID: 3779990671538114623}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,8 @@ GameObject:
   - component: {fileID: 8008433099505255436}
   - component: {fileID: 2438206202456968867}
   - component: {fileID: 6148772975361399324}
-  m_Layer: 5
+  - component: {fileID: 4171168313466770210}
+  m_Layer: 0
   m_Name: NormalUnitView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,10 +310,21 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 6148772975361399324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4171168313466770210}
+        m_MethodName: SelectUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &2438206202456968867
@@ -352,3 +364,15 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &4171168313466770210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454588209457582156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27958e69a2cd86747999e40ec5aab3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

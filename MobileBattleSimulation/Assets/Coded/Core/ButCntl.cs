@@ -7,15 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class ButCntl : MonoBehaviour{
     DataPather DP =new DataPather();
-    
+    Button btn;
     //Callback
 
     //customFunc::public
 
     //void
-    public void Gate() {
+    public void Gate(string SceneName) {
         DP.ScenePush(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(BasicBtnName());
+        if(SceneName == null || SceneName.Equals(""))
+            SceneManager.LoadScene(BasicBtnName());
+        else
+            SceneManager.LoadScene(SceneName);
     }
 
     public void BAECntl() {
@@ -35,7 +38,8 @@ public class ButCntl : MonoBehaviour{
     }
 
     public void SelectUnit() {
-
+        Debug.Log(BasicBtnName()+" is Clicked");
+        Gate("Unit_Dtailer");
     }
 
     //customFunc::private
@@ -44,7 +48,7 @@ public class ButCntl : MonoBehaviour{
     //string
     private string BasicBtnName() {
         string Name = null;
-        Button btn = null;
+        btn = null;
         btn = GetComponent<Button>();
         return Name = btn.name;
     }

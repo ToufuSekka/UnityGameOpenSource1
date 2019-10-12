@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class UnitView : MonoBehaviour{
-    public string TName;
+    public string UnitName;
+    public string FileName;
     Image SportLite;
     Text Name;
 
