@@ -6,15 +6,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButCntl : MonoBehaviour{
-    DataPather DP =new DataPather();
     Button btn;
+
     //Callback
 
     //customFunc::public
 
     //void
     public void Gate(string SceneName) {
-        DP.ScenePush(SceneManager.GetActiveScene().name);
+        DataPather.SceneSaver.Push(SceneManager.GetActiveScene().name);
         if(SceneName == null || SceneName.Equals(""))
             SceneManager.LoadScene(BasicBtnName());
         else
@@ -22,15 +22,14 @@ public class ButCntl : MonoBehaviour{
     }
 
     public void BAECntl() {
-        if (DP.SaverCounter("Scene") == 0)
+        if (DataPather.SceneSaver.Count.Equals(0))
             Exit();
         else
             BackDoor();
-       
     }
 
     public void BackDoor() {
-        SceneManager.LoadScene(DP.ScenePop());
+        SceneManager.LoadScene(DataPather.SceneSaver.Pop());
     }
 
     public void Exit() {
@@ -38,7 +37,8 @@ public class ButCntl : MonoBehaviour{
     }
 
     public void SelectUnit() {
-        Debug.Log(BasicBtnName()+" is Clicked");
+        DataPather.FileData = GetComponent<UnitView>().FileName;
+        Debug.Log(DataPather.FileData + " is Clicked");
         Gate("Unit_Dtailer");
     }
 

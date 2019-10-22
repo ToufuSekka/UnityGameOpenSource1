@@ -1,0 +1,9 @@
+﻿public enum ParseSet : int{
+    Name = 0x00,
+    UnitType = 0x01, Armor = 0x02, Weapon = 0x03,
+    Life = 0x04,
+    Damage = 0x05, AtkSpeed = 0x06, AtkRange = 0x07, SuptRange = 0x08,
+    March = 0x09, BattleRun = 0x0a,
+    Train = 0x0b, Supply = 0x0c, Weight = 0x0d,
+    Ability = 0x0e, UnLockCondition = 0x0f
+}

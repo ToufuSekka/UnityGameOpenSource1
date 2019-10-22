@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NormalUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<DataInput>
+		<CodeNUM>2</CodeNUM>
+		<Name>척후병</Name>
+		<UnitType>0</UnitType>
+		<Life>50</Life>
+		<Armor>1</Armor>
+		<Weapon>1</Weapon>
+		<Damage>3</Damage>
+		<AtkSpeed>3</AtkSpeed>
+		<AtkRange>3</AtkRange>
+		<SuptRange>0</SuptRange>
+		<March>4</March>
+		<BattleRun>2</BattleRun>
+		<Train>11</Train>
+		<Supply>2</Supply>
+		<Weight>6</Weight>
+		<lock>0</lock>
+	</DataInput>
+</NormalUnit>

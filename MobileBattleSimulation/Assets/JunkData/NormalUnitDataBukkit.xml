@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NornalUnit>
+  <DataInput>
+    <CodeNUM></CodeNUM>
+    <Name></Name>
+    <UnitType></UnitType>
+    <Life></Life>
+    <Armor></Armor>
+    <Weapon></Weapon>
+    <Damage></Damage>
+    <AtkSpeed></AtkSpeed>
+    <AtkRange></AtkRange>
+    <SuptRange></SuptRange>
+    <March></March>
+    <BattleRun></BattleRun>
+    <Train></Train>
+    <Supply></Supply>
+    <Weight></Weight>
+    <Ability></Ability>
+    <lock></lock>
+    <UnLockCondition></UnLockCondition>
+  </DataInput>
+  <DataInput>
+    <CodeNUM></CodeNUM>
+    <Name></Name>
+    <UnitType></UnitType>
+    <Life></Life>
+    <Armor></Armor>
+    <Weapon></Weapon>
+    <Damage></Damage>
+    <AtkSpeed></AtkSpeed>
+    <AtkRange></AtkRange>
+    <SuptRange></SuptRange>
+    <March></March>
+    <BattleRun></BattleRun>
+    <Train></Train>
+    <Supply></Supply>
+    <Weight></Weight>
+    <Ability></Ability>
+    <lock></lock>
+    <UnLockCondition></UnLockCondition>
+  </DataInput>
+</NornalUnit>
