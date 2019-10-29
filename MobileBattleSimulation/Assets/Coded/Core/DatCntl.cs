@@ -38,7 +38,7 @@ public class DatCntl{
         XmlDoc.LoadXml(TA.text);
         XmlNO = XmlDoc.SelectNodes("NormalUnit")[0];
 
-        for (int r =0;r < 0x0e ; r++) {
+        for (int r =0x00;r < 0x0e ; r++) {
             Datas.Add(XmlNO.SelectSingleNode("DataInput").SelectSingleNode(Enum.GetName(typeof(ParseSet), r)).InnerText);
         }
         return this.Datas;
