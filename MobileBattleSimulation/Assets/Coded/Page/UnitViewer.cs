@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UnitViewer : MonoBehaviour{
 
@@ -11,7 +8,7 @@ public class UnitViewer : MonoBehaviour{
     string[] Needs = {"Name"};
     //CallBack
     private void Start() {
-        foreach (string[] ArrData in DATC.NormalUnitView()) {
+        foreach (string[] ArrData in DATC.UnitView("NormalUnitData")) {
             go = Instantiate(Resources.Load("UIData/NormalUnitView"), GameObject.Find("UnitViewr").transform) as GameObject;
             go.name = ArrData[1];
             go.GetComponent<UnitView>().FileName = ArrData[0];
