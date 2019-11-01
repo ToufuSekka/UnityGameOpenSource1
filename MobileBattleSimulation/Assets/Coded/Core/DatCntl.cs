@@ -5,7 +5,6 @@ using UnityEngine;
 using System.IO;
 using System.Xml;
 
-
 public class DatCntl{
     TextAsset TA;
 
@@ -14,45 +13,51 @@ public class DatCntl{
     XmlNode XmlNO = null;
     List<object> Datas = new List<object>();
 
-    readonly string UnChangablePath= "UnitData/NormalUnitData";
+    string BigPath;
 
-    public List<object> UnitView(string Type) {
+    public List<object> FilesView(string Type, string[] dataName) {
+        BigPath = PathSwichter(Type);
 
-        di = new DirectoryInfo(Application.dataPath + "/Resources/UnitData/" + Type);
+        di = new DirectoryInfo(Application.dataPath + "/Resources/"+ BigPath + "/" + Type);
         foreach (FileInfo Fi in di.GetFiles("*.xml")){
-            string[] data = new string[2];
+            string[] data = new string[dataName.Length];
             data[0] = Fi.Name.Replace(".xml", null);
-            TA = (TextAsset)Resources.Load(UnChangablePath + "/" + data[0]);
+            TA = (TextAsset)Resources.Load(BigPath + "/"+ Type + "/" + data[0]);
             XmlDoc.LoadXml(TA.text);
-            XmlNO = XmlDoc.SelectNodes("NormalUnit")[0];
+            XmlNO = XmlDoc.SelectNodes(Type)[0];
+            for (int r= 1;r< dataName.Length ;r++) 
+                data[r] = XmlNO.SelectSingleNode("DataInput").SelectSingleNode(dataName[r]).InnerText;
 
-            data[1] = XmlNO.SelectSingleNode("DataInput").SelectSingleNode("Name").InnerText;
             Datas.Add(data);
         }
         Debug.Log("Bring_Ends");
         return this.Datas;
     }
 
-    public List<object> NormalDetail(string FileName){
-        TA = (TextAsset)Resources.Load(UnChangablePath + "/" + FileName);
-        XmlDoc.LoadXml(TA.text);
-        XmlNO = XmlDoc.SelectNodes("NormalUnit")[0];
+    public List<object> AXmlFileview(string Type,string FileName){
+        BigPath = PathSwichter(Type);
 
-        for (int r =0x00;r < 0x0e ; r++) {
+        TA = (TextAsset)Resources.Load(BigPath + "/" + Type + "/"+ FileName);
+        XmlDoc.LoadXml(TA.text);
+        XmlNO = XmlDoc.SelectNodes(Type)[0];
+    
+        for (int r =0x00;r < 0x0e ; r++)
             Datas.Add(XmlNO.SelectSingleNode("DataInput").SelectSingleNode(Enum.GetName(typeof(ParseSet), r)).InnerText);
-        }
         return this.Datas;
     }
 
-    protected List<object> Test(string FileName){
-        TA = (TextAsset)Resources.Load(UnChangablePath + "/" + FileName);
-        XmlDoc.LoadXml(TA.text);
-        XmlNO = XmlDoc.SelectNodes("NormalUnit")[0];
-
-        for (int r = 0x00; r < 0x0e; r++)
+    private string PathSwichter(string Type) {
+        string returner="";
+        switch (Type)
         {
-            Datas.Add(XmlNO.SelectSingleNode("DataInput").SelectSingleNode(Enum.GetName(typeof(ParseSet), r)).InnerText);
+            case "NormalUnit":
+            case "Hero":
+                returner = "UnitData";
+                break;
+            case "Squad":
+                returner = "UserData";
+                break;
         }
-        return this.Datas;
+        return returner;
     }
 }

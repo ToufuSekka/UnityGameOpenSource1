@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/UnitControl/Unit_Dtailer.unity
     guid: 624cfbe3a3037fb4089747636d6092b8
+  - enabled: 1
+    path: Assets/Scenes/Main/UnitControl/Squad.unity
+    guid: fe8441356c057684e966a02ac39dde7d
   m_configObjects: {}

@@ -10,7 +10,7 @@ public class UnitSpecifics : MonoBehaviour {
     Text test;
     void Start(){
         
-        foreach (var data in DC.NormalDetail(DataPather.FileData)) {
+        foreach (var data in DC.AXmlFileview("NormalUnit", DataPather.FileData)) {
             string Finder = Enum.GetName(typeof(ParseSet), r) + "_Data";
             text[r] = GameObject.Find(Finder).GetComponent<Text>();
             switch (r) {

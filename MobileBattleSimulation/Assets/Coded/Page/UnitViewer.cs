@@ -5,10 +5,9 @@ public class UnitViewer : MonoBehaviour{
     DatCntl DATC = new DatCntl();
     GameObject go;
     int x = 1;
-    string[] Needs = {"Name"};
     //CallBack
     private void Start() {
-        foreach (string[] ArrData in DATC.UnitView("NormalUnitData")) {
+        foreach (string[] ArrData in DATC.FilesView("NormalUnit",new string[] {"FileName","Name"})) {
             go = Instantiate(Resources.Load("UIData/NormalUnitView"), GameObject.Find("UnitViewr").transform) as GameObject;
             go.name = ArrData[1];
             go.GetComponent<UnitView>().FileName = ArrData[0];

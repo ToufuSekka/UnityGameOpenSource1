@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+public class Squad : MonoBehaviour{
+    GameObject[] Units;
+    Image img;
+    Text txt;
 
-public class Squad : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    DatCntl DAT= new DatCntl();
+
+    void Start(){
+        Units = new GameObject[8];
+        DAT.AXmlFileview("Squads", "Squad_"+ selected(1));
+        for (int a =0;a < Units.Length ;a++) {
+            Units[a] = GameObject.Find("");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    string selected(int number){
+        string selectNum= "1";
+        return selectNum;
     }
 }
