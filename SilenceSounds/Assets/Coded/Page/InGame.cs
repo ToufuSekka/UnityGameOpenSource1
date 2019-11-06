@@ -7,8 +7,6 @@ public class InGame : MonoBehaviour{
     AUDCNTL audct = new AUDCNTL();
     BTNCNTL btnct = new BTNCNTL();
 
-    DataPather DatPth = new DataPather();
-
     readonly string nulla ="NullData;NullData";
     string[] sorter;
     string chapName;
@@ -19,7 +17,7 @@ public class InGame : MonoBehaviour{
         DataPather.realData.Add(GameObject.Find("Name_Text"));
         DataPather.realData.Add(GameObject.Find("Log_Text"));
         DataPather.realData.Add(GameObject.Find("BGI"));
-        chapName = DatPth.CahpterNamer();
+        chapName = DataPather.ChapterSaver;
     }
 
     void Update(){
@@ -39,8 +37,8 @@ public class InGame : MonoBehaviour{
                 r++;
             else
                 r--;
-            sorter = datact.DataSorter(chapName, r);
-            datact.DataOutputter(sorter);
+            sorter = datact.DataSecondSort(chapName, r);
+            datact.DataFirstSort(sorter);
         } while (!sorter[0].Equals("logger") || sorter[1].Equals("break"));
 
         if (sorter[2].Equals(nulla)) {

@@ -32,7 +32,7 @@ public class DATACNTL : MonoBehaviour{
         }
     }
 
-    public void DataOutputter(string[] Datas) {
+    public void DataFirstSort(string[] Datas) {
         switch (Datas[0]) {
             case "sound":
                 Proc.Audior(Datas[2]);//create more
@@ -47,7 +47,7 @@ public class DATACNTL : MonoBehaviour{
     }
 
     //string[]
-    public string[] DataSorter(string FileName, int number) {
+    public string[] DataSecondSort(string FileName, int number) {
         string[] Datapool = new string[3];
         XmlLoader(FileName, number, "Datas/Line");
 
@@ -61,6 +61,7 @@ public class DATACNTL : MonoBehaviour{
             Datapool[0] = "logger";
             Datapool[1] = "Auto";
             Datapool[2] = "NullData;NullData";
+            Debug.Log("End of Datas");
         }
         return Datapool;
     }

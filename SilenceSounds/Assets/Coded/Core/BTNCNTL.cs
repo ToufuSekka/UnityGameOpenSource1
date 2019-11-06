@@ -10,15 +10,13 @@ public class BTNCNTL : MonoBehaviour{
     Button BTN;
     ANICNTL anicon = new ANICNTL();
     DATACNTL datacon = new DATACNTL();
-    DataPather DatPth = new DataPather();
-
-    bool checker = false;
     //callback
 
     //customFunc::public
     //void
     public void SceneButton() {
         Debug.Log("Goto " + CFuncNS());
+        DataPather.SceneSaver.Push(CFuncNS());
         SceneManager.LoadScene(CFuncNS());
     }
 
@@ -28,7 +26,7 @@ public class BTNCNTL : MonoBehaviour{
 
     public void StartGame() {
         SceneManager.LoadScene("InGame");
-        DatPth.ChapterBucket(CFuncNS());
+        DataPather.ChapterSaver = CFuncNS();
     }
 
     //preTestFunc
@@ -43,10 +41,5 @@ public class BTNCNTL : MonoBehaviour{
         BTN = GetComponent<Button>();
         Name = BTN.name;
         return Name;
-    }
-
-    //bool
-    private bool BoolReturner() {
-        return checker = !checker;
     }
 }

@@ -6,56 +6,21 @@ public class ANICNTL{
     GameObject[] Obj;
     Animator[] Anim;
 
-    //customFunc::public
-    public void Slide(bool SwitchValue) {
+    //protected
+    protected void SwitchTypeAnime(string Name, bool swiches) {
         Obj = new GameObject[2];
         Obj[0] = GameObject.Find("SlidingImage");
         Obj[1] = GameObject.Find("Slider");
 
-        if (SwitchValue) {
-            Obj[0].GetComponent<Animator>().Play("SlideUp");
+        if (swiches) {
+            Obj[0].GetComponent<Animator>().Play(Name+"Up");
             Obj[1].GetComponent<Animator>().Play("HideOn");
             Debug.Log("Active");
-        } else {
-            Obj[0].GetComponent<Animator>().Play("SildeDown");
-            Obj[1].GetComponent<Animator>().Play("HideOff");
-            Debug.Log("DeActive");
         }
-        Debug.Log("Sliding");
-    }
-
-    protected void Fade(bool SwitchValue) {
-        Obj = new GameObject[2];
-        Obj[0] = GameObject.Find("SlidingImage");
-        Obj[1] = GameObject.Find("Fader");
-
-        if (SwitchValue) {
-            Obj[0].GetComponent<Animator>().Play("SlideUp");
+        else {
+            Obj[0].GetComponent<Animator>().Play(Name+"Down");
             Obj[1].GetComponent<Animator>().Play("HideOn");
-            Debug.Log("Active");
-        } else {
-            Obj[0].GetComponent<Animator>().Play("SildeDown");
-            Obj[1].GetComponent<Animator>().Play("HideOff");
-            Debug.Log("DeActive");
+            Debug.Log("DisActive");
         }
-        Debug.Log("Sliding");
     }
-
-    protected void Pops(bool SwitchValue) {
-        Obj = new GameObject[2];
-        Obj[0] = GameObject.Find("SlidingImage");
-        Obj[1] = GameObject.Find("Slider");
-
-        if (SwitchValue) {
-            Obj[0].GetComponent<Animator>().Play("SlideUp");
-            Obj[1].GetComponent<Animator>().Play("HideOn");
-            Debug.Log("Active");
-        } else {
-            Obj[0].GetComponent<Animator>().Play("SildeDown");
-            Obj[1].GetComponent<Animator>().Play("HideOff");
-            Debug.Log("DeActive");
-        }
-        Debug.Log("Sliding");
-    }
-    //customFunc::private
 }
