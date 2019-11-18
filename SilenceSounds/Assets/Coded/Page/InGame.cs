@@ -17,6 +17,7 @@ public class InGame : MonoBehaviour{
         DataPather.realData.Add(GameObject.Find("Name_Text"));
         DataPather.realData.Add(GameObject.Find("Log_Text"));
         DataPather.realData.Add(GameObject.Find("BGI"));
+
         chapName = DataPather.ChapterSaver;
     }
 
@@ -39,6 +40,7 @@ public class InGame : MonoBehaviour{
                 r--;
             sorter = datact.DataSecondSort(chapName, r);
             datact.DataFirstSort(sorter);
+            //Debug.Log(r + " " + sorter[2]);
         } while (!sorter[0].Equals("logger") || sorter[1].Equals("break"));
 
         if (sorter[2].Equals(nulla)) {
@@ -46,8 +48,6 @@ public class InGame : MonoBehaviour{
                 r--;
             else
                 r++;
-            Debug.Log("Ends");
         }
-        Debug.Log(r +" : "+ sorter[2]);
     }
 }

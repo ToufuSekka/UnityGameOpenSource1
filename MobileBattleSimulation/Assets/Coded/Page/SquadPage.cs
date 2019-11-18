@@ -11,7 +11,7 @@ public class Squad : MonoBehaviour{
 
     void Start(){
         Units = new GameObject[8];
-        DAT.AXmlFileview("Squads", "Squad_"+ selected(1));
+        //DAT.AXmlFileview("Squads", "Squad_"+ selected(1));
         for (int a =0;a < Units.Length ;a++) {
             Units[a] = GameObject.Find("");
         }

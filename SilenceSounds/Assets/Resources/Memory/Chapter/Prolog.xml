@@ -2,7 +2,7 @@
 <Datas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Chapter Name="만남" Preimg="x" Preview="&quot;이걸로 모든것이 변하였다.&quot;"/>
 	<Line Number="1" Type="image" locked="Auto">
-		<Description>BG;ClonenRoom001_Night.png;FadeIn</Description>
+		<Description>BG;ClonenRoom001_Night;FadeIn</Description>
 	</Line>
 	<Line Number="2" Type="sound" locked="Auto">
 		<Description>GlassBroken.wav;Noloop</Description>
