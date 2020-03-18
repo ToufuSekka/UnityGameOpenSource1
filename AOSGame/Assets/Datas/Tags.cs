@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventData : MonoBehaviour{
-    string EventName;
-    string Events;
+public enum Tags : int{
+    equipable, Ammo, Consumable,
+    Survive, Weapon, Armor
 }
