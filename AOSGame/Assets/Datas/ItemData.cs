@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ItemData : MonoBehaviour{
     public string ItemNName;
-    public Tags ItemTags;
-    public int SizeX, SizeY, Weight;
+    public ItemTag Tags;
+    public EXE_Effect Effects;
+    public int[] Sizes, Weight;
 
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Tags : int{
-    equipable, Ammo, Consumable,
-    Survive, Weapon, Armor
+public enum ItemTag : int{
+    Equitment, Consume, Ammo, Accessarry
 }
