@@ -1,9 +1,0 @@
-﻿{
-    "name" : "Master",
-    "BasicAbliites":
-    {
-    "Life" : "1250",
-    "Armor" : "2",
-    "Damage" : "225"},
-    "CycleRate" : "2"
-}
