@@ -6,5 +6,5 @@ public class Players : MonoBehaviour{
     public string UserName, ClassName;
 
     public UserStats stat;
-    public EventData Events;
+    //public Event Events;
 }
