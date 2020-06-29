@@ -40,7 +40,6 @@ public class Timer {
     public void StopTimer() {
         setter = false;
         run(setter);
-
     }
 
     public void ResetTimer() {
