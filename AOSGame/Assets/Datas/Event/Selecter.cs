@@ -15,7 +15,6 @@ public class Selecter : MonoBehaviour{
     }
 
     void creation(/*string[] Data*/) {
-        Button bts = GetComponent<Button>();
-        bts.transform.Translate(new Vector3(0, 0, 0));
+        //
     }
 }
