@@ -9,7 +9,7 @@ public class ColiTrash01 : MonoBehaviour{
         obj = GameObject.Find("Line");
     }
     private void Update(){
-        obj.transform.Rotate(new Vector3(0,0,-1));
+        obj.transform.Rotate(new Vector3(0,0,-0.05f));
     }
     private void OnTriggerEnter2D(Collider2D col2d){
         if (col2d.gameObject.CompareTag("NoteType1"))
