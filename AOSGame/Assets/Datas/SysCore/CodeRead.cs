@@ -2,17 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CodeRead : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class CodeRead : MonoBehaviour{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

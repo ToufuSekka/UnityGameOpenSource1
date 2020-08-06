@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Viewing : MonoBehaviour{
+public class KeySetting : MonoBehaviour{
 
 }
