@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Keying : MonoBehaviour{
+    string[] KeySet= {"wsad" };
+
+    void Update() {
+        if (Input.anyKeyDown) {
+            Debug.Log(Input.inputString);
+            StartCoroutine(Input.inputString.ToUpper());
+        }
+    }
 
     //wasd <- walk, space <- Jump, CTNL+w <- Run, Shift <- Shrink,
 
@@ -15,26 +23,26 @@ public class Keying : MonoBehaviour{
     //C <- Tagging
     //V <- Aliencing
     //B <- Invnetory
-
     //1-9 keys <- Quick Slot
-    void Update() {
 
-    }
-
-    IEnumerator FrontAndRun() {
+    IEnumerator W() {
         yield return null;
     }
-    IEnumerator Back() {
-        yield return null;
-
-    }
-    IEnumerator Right() {
+    IEnumerator S() {
         yield return null;
     }
-    IEnumerator Left() {
+    IEnumerator A() {
+        yield return null;
+    }
+    IEnumerator D() {
         yield return null;
     }
     IEnumerator Shringking() {
+        yield return null;
+    }
+
+    IEnumerator SPACE() {
+        Debug.Log("Space");
         yield return null;
     }
 }
