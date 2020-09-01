@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tags : MonoBehaviour{
-
+public enum InvTag{
+    UserBase, Merchent, House, Bonus
 }
