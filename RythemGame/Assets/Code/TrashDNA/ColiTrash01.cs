@@ -1,23 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ColiTrash01 : MonoBehaviour{
 
-    GameObject obj;
+    List<char[]> Li = new List<char[]>();
+
+    GameObject obj,obj2;
+    Text t;
+
+    float vT = 0, tick;
+
     private void Start(){
+
         obj = GameObject.Find("Line");
-    }
-    private void Update(){
-        obj.transform.Rotate(new Vector3(0,0,-0.05f));
-    }
-    private void OnTriggerEnter2D(Collider2D col2d){
-        if (col2d.gameObject.CompareTag("NoteType1"))
-            Debug.Log("touched");
+        obj2 = GameObject.Find("Text");
+
+        Li.Add(new char[] { 'v','a','q'});
     }
 
-    private void OnTriggerExit2D(Collider2D col2d){
-        if (col2d.gameObject.CompareTag("NoteType1"))
-            Debug.Log("get out");
+    private void FixedUpdate() {
+        tick = Time.deltaTime * (300 / 60) / 4;
+        vT += Time.deltaTime;
+
+        obj2.GetComponent<Text>().text = "Tick is : " + tick.ToString() + ", Time is :" + vT.ToString();
+
+        obj.transform.Rotate(new Vector3(0, 0, -tick * 360));
     }
 }
