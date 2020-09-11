@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class ColiTrash01 : MonoBehaviour{
 
-    List<char[]> Li = new List<char[]>();
-
     GameObject obj,obj2;
-    Text t;
 
     float vT = 0, tick;
 
@@ -16,8 +13,6 @@ public class ColiTrash01 : MonoBehaviour{
 
         obj = GameObject.Find("Line");
         obj2 = GameObject.Find("Text");
-
-        Li.Add(new char[] { 'v','a','q'});
     }
 
     private void FixedUpdate() {
@@ -25,7 +20,6 @@ public class ColiTrash01 : MonoBehaviour{
         vT += Time.deltaTime;
 
         obj2.GetComponent<Text>().text = "Tick is : " + tick.ToString() + ", Time is :" + vT.ToString();
-
         obj.transform.Rotate(new Vector3(0, 0, -tick * 360));
     }
 }
