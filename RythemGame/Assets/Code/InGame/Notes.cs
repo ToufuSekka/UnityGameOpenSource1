@@ -7,10 +7,11 @@ public class Notes : MonoBehaviour{
     public int ScoreLIne, ChordLine;
     public char NoteData;
 
-    //ScoreLIne, ChordLine, Note;
+    //ScoreLIne, ChordLine, Note, perfactTiming;
     public struct Note {
         public Object NoteType;
-        public int ScoreLIne, ChordLine;
         public char NoteData;
+        public int ScoreLIne, ChordLine;
+        public float TicPerf;
     }
 }

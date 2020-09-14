@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ColiTrash02 : MonoBehaviour{
 
+    float Tempos;
+
     float x, y, r =300, Roll;
     float TickTime=0, RealTime=0, Ticks;
     Notes.Note notdat;
@@ -23,11 +25,13 @@ public class ColiTrash02 : MonoBehaviour{
         Texts = GameObject.Find("Text");
         vid = GameObject.Find("AThings");
 
-        Rolled(PtnSpreyer());
+        //Rolled(PtnSpreyer());
         Reading();
     }
 
     void FixedUpdate() {
+        if (Time.frameCount % 60 == 0) System.GC.Collect();
+        
         SongCloak(Tempos);
     }
 
@@ -40,21 +44,10 @@ public class ColiTrash02 : MonoBehaviour{
         return h;
     }
 
-    private void Ticker(int BPM) {
-        Ticks =Time.deltaTime * (BPM / 60) / 4;
-        TickTime +=Ticks;
-        RealTime += Time.deltaTime;
 
-        LineOBJ.transform.Rotate(new Vector3(0, 0, -Ticks * 360));
-
-        Texts.GetComponent<Text>().text =
-            "TickTime : " + TickTime.ToString() +
-            ", RealTime is :" + RealTime.ToString();
-    }
-
+    //spreading Notes(Delete if complete under code "NotSpr" or another)
     private void Rolled(int ptV) {
         Roll = 720 / ptV;
-        Debug.Log("NoteValues : " + ptV);
 
         //360; A = b*h ->  A/h=b
         for (int j = 0; j < ptV; j++) {
@@ -65,7 +58,6 @@ public class ColiTrash02 : MonoBehaviour{
     }
 
     //TestSorter
-    int Tempos;
     
     private void Reading() {
         FullData = Resources.Load("SongData/Test") as TextAsset;
@@ -103,32 +95,39 @@ public class ColiTrash02 : MonoBehaviour{
         if (ALineData.StartsWith("@")) {
             string[] Score = ALineData.Split(comcut);
             NotSpr(Score);
-            Debug.Log("Score: "+Score[0]+ ", Line : "+Score[1]+ ", Notes :"+Score[2]);
         }
     }
 
     private int NotSpr(string[] SocreLine) {
         // 0=ScoreLine, 1=ChordLine, 2=Note
+        notdat.ScoreLIne = int.Parse(SocreLine[0].Replace("@", null));
+        notdat.ChordLine = int.Parse(SocreLine[1].Replace("@", null));
         char[] ptns = SocreLine[2].ToCharArray();
-        notdat.ScoreLIne =int.Parse(SocreLine[0]);
-        notdat.ChordLine = int.Parse(SocreLine[1]);
         notdat.NoteData = ptns[0];
 
+        //for (int r = 0 ; r==0 ;r++);
+
         int h = ptns.Length;
+
+        Debug.Log("Score : "+notdat.ScoreLIne+
+            ", Line : "+ notdat.ChordLine+
+            ", Data" + SocreLine[2]);
+
         return h;
     }
 
-    private void SongCloak(int BPM) {
+    private void SongCloak(float BPM) {
         GameObject Text2 = GameObject.Find("Text2");
 
         Ticks = Time.deltaTime * (BPM / 60) / 4;
         TickTime += Ticks;
         RealTime += Time.deltaTime;
-        //LineOBJ.transform.Rotate(new Vector3(0, 0, -Ticks * 360));
+
+        LineOBJ.transform.Rotate(new Vector3(0, 0, -Ticks * 360));
 
         Text2.GetComponent<Text>().text =
-            "TickTime : " + TickTime +
-            ", RealTime :" + RealTime +
-            ", Now BPM :" + BPM;
+            "Tick : " + TickTime.ToString("F2") +
+            ", Real :" + RealTime.ToString("F2") +
+            ", BPM :" + BPM;
     }
 }
