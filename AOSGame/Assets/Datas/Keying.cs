@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Keying : MonoBehaviour{
-    string[] KeySet= {"wsad" };
-
     void Update() {
         if (Input.anyKeyDown) {
-            Debug.Log(Input.inputString);
-            StartCoroutine(Input.inputString.ToUpper());
+            if (Input.GetKey(KeyCode.Space))
+                StartCoroutine("Space");
+            else if (Input.GetKey(KeyCode.Tab))
+                StartCoroutine("Tab");
+            else {
+                char[] cArr = Input.inputString.ToCharArray();
+                foreach (char c in cArr )
+                    StartCoroutine(c.ToString());
+            }
         }
     }
 
@@ -25,24 +30,35 @@ public class Keying : MonoBehaviour{
     //B <- Invnetory
     //1-9 keys <- Quick Slot
 
-    IEnumerator W() {
-        yield return null;
-    }
-    IEnumerator S() {
-        yield return null;
-    }
-    IEnumerator A() {
-        yield return null;
-    }
-    IEnumerator D() {
-        yield return null;
-    }
-    IEnumerator Shringking() {
+    IEnumerator w() {
+        Debug.Log("Walking");
         yield return null;
     }
 
-    IEnumerator SPACE() {
-        Debug.Log("Space");
+    IEnumerator W() {
+        Debug.Log("Running");
+        yield return null;
+    }
+    IEnumerator s() {
+        Debug.Log("Back");
+        yield return null;
+    }
+    IEnumerator a() {
+        Debug.Log("Left");
+        yield return null;
+    }
+    IEnumerator d() {
+        Debug.Log("Right");
+        yield return null;
+    }
+
+    IEnumerator Space() {
+        Debug.Log("Jumping");
+        yield return null;
+    }
+
+    IEnumerator Tab() {
+        Debug.Log("Tabbing");
         yield return null;
     }
 }
