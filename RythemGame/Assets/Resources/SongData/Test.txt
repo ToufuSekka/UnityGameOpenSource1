@@ -1,6 +1,6 @@
 #SongName:Testss;
 #Composer:Tester;
-#Tempo:65;
+#Tempo:138;
 
 @000:0:00000000;
 

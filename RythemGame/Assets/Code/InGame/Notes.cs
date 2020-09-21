@@ -9,9 +9,22 @@ public class Notes : MonoBehaviour{
 
     //ScoreLIne, ChordLine, Note, perfactTiming;
     public struct Note {
-        public Object NoteType;
+        //public Object NoteType;
         public char NoteData;
         public int ScoreLIne, ChordLine;
         public float TicPerf;
+    }
+
+    public void Creation() {
+
+    }
+
+    public void Touched() {
+
+    }
+
+    //callback
+    void OnDestroy() {
+
     }
 }

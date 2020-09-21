@@ -8,9 +8,9 @@ public class ColiTrash02 : MonoBehaviour{
 
     float Tempos;
 
-    float x, y, r =300, Roll;
+    float x,x2,x3, y,y2,y3, r =50, Roll;
     float TickTime=0, RealTime=0, Ticks;
-    Notes.Note notdat;
+    Notes.Note NoDat;
 
     TextAsset FullData;
     GameObject outOBJ, duply,vid;
@@ -24,41 +24,33 @@ public class ColiTrash02 : MonoBehaviour{
         LineOBJ = GameObject.Find("Line");
         Texts = GameObject.Find("Text");
         vid = GameObject.Find("AThings");
-
-        //Rolled(PtnSpreyer());
         Reading();
+        Spraying(32);
     }
 
     void FixedUpdate() {
-        if (Time.frameCount % 60 == 0) System.GC.Collect();
-        
         SongCloak(Tempos);
+
+        if (Time.frameCount % 60 == 0) System.GC.Collect();
     }
-
-
-    //BPMAnd RolledTest
-    private int PtnSpreyer() {
-        string aLIne="qdagdfsdfasdqwdafggfdgaafd";
-        char[] ptns = aLIne.ToCharArray();
-        int h = ptns.Length;
-        return h;
-    }
-
 
     //spreading Notes(Delete if complete under code "NotSpr" or another)
-    private void Rolled(int ptV) {
+    private void Spraying(float ptV) {
         Roll = 720 / ptV;
-
+        Debug.Log("Datafox : " + Roll);
         //360; A = b*h ->  A/h=b
         for (int j = 0; j < ptV; j++) {
-            x = r * Mathf.Cos(((Roll * j) - 180) * (Mathf.PI / -360));
-            y = r * Mathf.Sin(((Roll * j) - 180) * (Mathf.PI / -360));
-            duply = Instantiate(outOBJ, new Vector2(x, y), Quaternion.identity, GameObject.Find("AThings").transform);
+            for (int h=1;h <9 ;h++) {
+                x = (r*h) * Mathf.Cos(((Roll * j) - 180) * (Mathf.PI / -360));
+                y = (r*h) * Mathf.Sin(((Roll * j) - 180) * (Mathf.PI / -360));
+                duply = Instantiate(outOBJ, new Vector2(x, y), Quaternion.identity, GameObject.Find("Image").transform);
+            }
+            duply.name ="notes" + j.ToString();
+            Debug.Log("Loc : "+ Roll * j);
         }
     }
 
     //TestSorter
-    
     private void Reading() {
         FullData = Resources.Load("SongData/Test") as TextAsset;
         StringReader strReader = new StringReader(FullData.text);
@@ -98,22 +90,24 @@ public class ColiTrash02 : MonoBehaviour{
         }
     }
 
-    private int NotSpr(string[] SocreLine) {
+    private void NotSpr(string[] SocreLine) {
+
+        float OriginOne =1, LenDiv;
+        char[] ptns = SocreLine[2].ToCharArray();// this is divisions?
         // 0=ScoreLine, 1=ChordLine, 2=Note
-        notdat.ScoreLIne = int.Parse(SocreLine[0].Replace("@", null));
-        notdat.ChordLine = int.Parse(SocreLine[1].Replace("@", null));
-        char[] ptns = SocreLine[2].ToCharArray();
-        notdat.NoteData = ptns[0];
+        NoDat.NoteData = ptns[0];
 
-        //for (int r = 0 ; r==0 ;r++);
+        LenDiv = OriginOne/ ptns.Length;
+        for (int x = 0; x < ptns.Length; x++) {
+            NoDat.ScoreLIne = int.Parse(SocreLine[0].Replace("@", null));
+            NoDat.ChordLine = int.Parse(SocreLine[1].Replace("@", null));
+            NoDat.TicPerf = NoDat.ScoreLIne +LenDiv * x;
+            NoDat.NoteData = ptns[x];
+        };
+    }
 
-        int h = ptns.Length;
+    private void Spreader() {
 
-        Debug.Log("Score : "+notdat.ScoreLIne+
-            ", Line : "+ notdat.ChordLine+
-            ", Data" + SocreLine[2]);
-
-        return h;
     }
 
     private void SongCloak(float BPM) {

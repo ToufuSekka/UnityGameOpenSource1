@@ -7,19 +7,14 @@ public class ColiTrash01 : MonoBehaviour{
 
     GameObject obj,obj2;
 
-    float vT = 0, tick;
+    private void Timedivid() {
+        float timer = 1, tri =8, diviv;
 
-    private void Start(){
-
-        obj = GameObject.Find("Line");
-        obj2 = GameObject.Find("Text");
-    }
-
-    private void FixedUpdate() {
-        tick = Time.deltaTime * (300 / 60) / 4;
-        vT += Time.deltaTime;
-
-        obj2.GetComponent<Text>().text = "Tick is : " + tick.ToString() + ", Time is :" + vT.ToString();
-        obj.transform.Rotate(new Vector3(0, 0, -tick * 360));
+        //divivi is ArrayLength
+        diviv = timer / tri;
+        for (int j =0;j<tri ;j++) {
+            Debug.Log(diviv*j);
+        }
+        
     }
 }
