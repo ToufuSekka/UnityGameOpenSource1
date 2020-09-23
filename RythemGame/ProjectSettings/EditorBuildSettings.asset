@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Code/TrashDNA/Test.unity
+    guid: 78943a8e696aabc4e87ae81f61aad4f3
   m_configObjects: {}

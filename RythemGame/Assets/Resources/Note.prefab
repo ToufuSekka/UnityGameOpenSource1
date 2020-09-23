@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2142718655770251110}
   - component: {fileID: 2142718655770251114}
   - component: {fileID: 2142718655770251113}
+  - component: {fileID: 7927595422775531084}
   m_Layer: 5
   m_Name: Note
   m_TagString: NoteType1
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -138,3 +139,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7927595422775531084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142718655770251108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40e634c70a909544a667b03172694ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScoreLIne: 0
+  ChordLine: 0
+  TicPerf: 0
+  NoteData: 0

@@ -5,17 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ColiTrash02 : MonoBehaviour{
+    int testNumber = 0;
 
-    float Tempos;
 
-    float x,x2,x3, y,y2,y3, r =50, Roll;
+    public Queue<Notes> NotQ = new Queue<Notes>();
+    Notes Not;
+
+    float Tempos, X,Y, Stan, NVal;
+    float x, y, r =50, Roll;
     float TickTime=0, RealTime=0, Ticks;
-    Notes.Note NoDat;
-
     TextAsset FullData;
     GameObject outOBJ, duply,vid;
     GameObject LineOBJ, Texts;
-
 
     void Start() {
 
@@ -25,12 +26,10 @@ public class ColiTrash02 : MonoBehaviour{
         Texts = GameObject.Find("Text");
         vid = GameObject.Find("AThings");
         Reading();
-        Spraying(32);
     }
 
     void FixedUpdate() {
         SongCloak(Tempos);
-
         if (Time.frameCount % 60 == 0) System.GC.Collect();
     }
 
@@ -45,7 +44,6 @@ public class ColiTrash02 : MonoBehaviour{
                 y = (r*h) * Mathf.Sin(((Roll * j) - 180) * (Mathf.PI / -360));
                 duply = Instantiate(outOBJ, new Vector2(x, y), Quaternion.identity, GameObject.Find("Image").transform);
             }
-            duply.name ="notes" + j.ToString();
             Debug.Log("Loc : "+ Roll * j);
         }
     }
@@ -86,30 +84,39 @@ public class ColiTrash02 : MonoBehaviour{
         //DataType2
         if (ALineData.StartsWith("@")) {
             string[] Score = ALineData.Split(comcut);
+            Debug.Log(ALineData);
             NotSpr(Score);
         }
     }
 
     private void NotSpr(string[] SocreLine) {
-
-        float OriginOne =1, LenDiv;
-        char[] ptns = SocreLine[2].ToCharArray();// this is divisions?
         // 0=ScoreLine, 1=ChordLine, 2=Note
-        NoDat.NoteData = ptns[0];
+        float OriginOne = 1, LenDiv;
 
-        LenDiv = OriginOne/ ptns.Length;
-        for (int x = 0; x < ptns.Length; x++) {
-            NoDat.ScoreLIne = int.Parse(SocreLine[0].Replace("@", null));
-            NoDat.ChordLine = int.Parse(SocreLine[1].Replace("@", null));
-            NoDat.TicPerf = NoDat.ScoreLIne +LenDiv * x;
-            NoDat.NoteData = ptns[x];
-        };
+        char[] ptns = SocreLine[2].ToCharArray();
+        LenDiv = OriginOne / ptns.Length;
+
+        float TolCir = 720 / ptns.Length;
+        float MinRad = 50;
+
+        for (int St = 0; St < ptns.Length; St++) {
+            LenDiv = OriginOne / ptns.Length;
+            outOBJ.GetComponent<Notes>().ScoreLIne = int.Parse(SocreLine[0].Replace("@", null));
+            outOBJ.GetComponent<Notes>().ChordLine = int.Parse(SocreLine[1].Replace("@", null));
+            float NVal = int.Parse(SocreLine[1].Replace("@", null));
+
+            outOBJ.GetComponent<Notes>().TicPerf = outOBJ.GetComponent<Notes>().ScoreLIne + (LenDiv * St);
+            outOBJ.GetComponent<Notes>().NoteData = ptns[St];
+
+            x = (MinRad * NVal) * Mathf.Cos(((TolCir * St) - 180) * (Mathf.PI / -360));
+            y = (MinRad * NVal) * Mathf.Sin(((TolCir * St) - 180) * (Mathf.PI / -360));
+            duply = Instantiate(outOBJ, new Vector2(x, y), Quaternion.identity, GameObject.Find("Image").transform);
+            testNumber++;
+
+            duply.name = testNumber.ToString();
+            duply.SetActive(false);
+        }
     }
-
-    private void Spreader() {
-
-    }
-
     private void SongCloak(float BPM) {
         GameObject Text2 = GameObject.Find("Text2");
 

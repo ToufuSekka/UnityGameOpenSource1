@@ -3,28 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Notes : MonoBehaviour{
-    public Object NoteType;
-    public int ScoreLIne, ChordLine;
+    public float ScoreLIne;
+    public float ChordLine;
+    public float TicPerf;
     public char NoteData;
 
-    //ScoreLIne, ChordLine, Note, perfactTiming;
-    public struct Note {
-        //public Object NoteType;
-        public char NoteData;
-        public int ScoreLIne, ChordLine;
-        public float TicPerf;
-    }
-
-    public void Creation() {
-
-    }
-
-    public void Touched() {
-
-    }
-
-    //callback
-    void OnDestroy() {
-
+    private void Update() {
+        
     }
 }
