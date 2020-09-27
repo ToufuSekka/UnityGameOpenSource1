@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Notes : MonoBehaviour{
-    public float ScoreLIne;
-    public float ChordLine;
-    public float TicPerf;
-    public char NoteData;
+    public float ScoreLIne=0;
+    public float ChordLine=0;
+    public float TicPerf=0;
+    public char NoteData='e';
 
-    private void Update() {
-        
+    private void FixedUpdate() {
+        if (TicPerf + 0.125 < ComCloak.MetroClok) {
+            Destroy(gameObject);
+        }
     }
 }

@@ -6,45 +6,43 @@ using UnityEngine.UI;
 
 public class ColiTrash02 : MonoBehaviour{
     int testNumber = 0;
-
-
-    public Queue<Notes> NotQ = new Queue<Notes>();
+    int je = 0;
+    float X, Y, Stan, NVal;
+    float Tempo;
     Notes Not;
 
-    float Tempos, X,Y, Stan, NVal;
-    float x, y, r =50, Roll;
-    float TickTime=0, RealTime=0, Ticks;
     TextAsset FullData;
     GameObject outOBJ, duply,vid;
-    GameObject LineOBJ, Texts;
+    GameObject LineOBJ, Text;
+
+    public static List<GameObject[]> NotePaper = new List<GameObject[]>();
 
     void Start() {
-
-        //Loader
         outOBJ = Resources.Load("Note") as GameObject;
         LineOBJ = GameObject.Find("Line");
-        Texts = GameObject.Find("Text");
+        Text = GameObject.Find("Text2");
         vid = GameObject.Find("AThings");
+        LineOBJ.AddComponent<ComCloak>();
         Reading();
     }
 
     void FixedUpdate() {
-        SongCloak(Tempos);
         if (Time.frameCount % 60 == 0) System.GC.Collect();
-    }
 
-    //spreading Notes(Delete if complete under code "NotSpr" or another)
-    private void Spraying(float ptV) {
-        Roll = 720 / ptV;
-        Debug.Log("Datafox : " + Roll);
-        //360; A = b*h ->  A/h=b
-        for (int j = 0; j < ptV; j++) {
-            for (int h=1;h <9 ;h++) {
-                x = (r*h) * Mathf.Cos(((Roll * j) - 180) * (Mathf.PI / -360));
-                y = (r*h) * Mathf.Sin(((Roll * j) - 180) * (Mathf.PI / -360));
-                duply = Instantiate(outOBJ, new Vector2(x, y), Quaternion.identity, GameObject.Find("Image").transform);
+        LineOBJ.GetComponent<ComCloak>().SongCloak(Tempo);
+
+        Text.GetComponent<Text>().text =
+            "Tick : " + ComCloak.MetroClok +
+            ", BPM :" + Tempo;
+
+        for (int p = 0; p < NotePaper.Count; p++) {
+            for (int q = 0; q < NotePaper[p].Length; q++) {
+                if (NotePaper[p][q].Equals(null)) {
+                    continue;
+                } else if (NotePaper[p][q].GetComponent<Notes>().TicPerf - 0.5 < ComCloak.MetroClok) {
+                    NotePaper[p][q].SetActive(true);
+                }
             }
-            Debug.Log("Loc : "+ Roll * j);
         }
     }
 
@@ -69,14 +67,11 @@ public class ColiTrash02 : MonoBehaviour{
             string[] lines = ALineData.Split(comcut);
             switch (lines[0]) {
                 case "#SongName":
-                    Debug.Log(lines[1]);
                     break;
                 case "#Composer":
-                    Debug.Log(lines[1]);
                     break;
                 case "#Tempo":
-                    Debug.Log(lines[1]);
-                    Tempos = int.Parse(lines[1]);
+                    Tempo = int.Parse(lines[1]);
                     break;
             }
         }
@@ -84,51 +79,36 @@ public class ColiTrash02 : MonoBehaviour{
         //DataType2
         if (ALineData.StartsWith("@")) {
             string[] Score = ALineData.Split(comcut);
-            Debug.Log(ALineData);
-            NotSpr(Score);
+            NoteSort(Score);
         }
     }
 
-    private void NotSpr(string[] SocreLine) {
+    private void NoteSort(string[] ScoLine) {
         // 0=ScoreLine, 1=ChordLine, 2=Note
+        float ScoNo = float.Parse(ScoLine[0].Replace("@", null));
+        float ChoNo = float.Parse(ScoLine[1]);
+        char[] NType = ScoLine[2].ToCharArray();
+
+        GameObject[] Garr = new GameObject[NType.Length];
         float OriginOne = 1, LenDiv;
+        float TolCir = 720 / NType.Length;
+        float MinRad = 100, DefRad = 40;
 
-        char[] ptns = SocreLine[2].ToCharArray();
-        LenDiv = OriginOne / ptns.Length;
+        for (int St = 0 ;St < NType.Length ;St++ ){
+            LenDiv = OriginOne / NType.Length;
+            outOBJ.GetComponent<Notes>().ScoreLIne = ScoNo;
+            outOBJ.GetComponent<Notes>().ChordLine = ChoNo;
+            outOBJ.GetComponent<Notes>().TicPerf = ScoNo + (LenDiv * St);
+            outOBJ.GetComponent<Notes>().NoteData = NType[St];
 
-        float TolCir = 720 / ptns.Length;
-        float MinRad = 50;
-
-        for (int St = 0; St < ptns.Length; St++) {
-            LenDiv = OriginOne / ptns.Length;
-            outOBJ.GetComponent<Notes>().ScoreLIne = int.Parse(SocreLine[0].Replace("@", null));
-            outOBJ.GetComponent<Notes>().ChordLine = int.Parse(SocreLine[1].Replace("@", null));
-            float NVal = int.Parse(SocreLine[1].Replace("@", null));
-
-            outOBJ.GetComponent<Notes>().TicPerf = outOBJ.GetComponent<Notes>().ScoreLIne + (LenDiv * St);
-            outOBJ.GetComponent<Notes>().NoteData = ptns[St];
-
-            x = (MinRad * NVal) * Mathf.Cos(((TolCir * St) - 180) * (Mathf.PI / -360));
-            y = (MinRad * NVal) * Mathf.Sin(((TolCir * St) - 180) * (Mathf.PI / -360));
-            duply = Instantiate(outOBJ, new Vector2(x, y), Quaternion.identity, GameObject.Find("Image").transform);
-            testNumber++;
-
-            duply.name = testNumber.ToString();
+            X = (MinRad + (DefRad * ChoNo)) * Mathf.Cos(((TolCir * St) - 180) * (Mathf.PI / -360));
+            Y = (MinRad + (DefRad * ChoNo)) * Mathf.Sin(((TolCir * St) - 180) * (Mathf.PI / -360));
+            duply = Instantiate(outOBJ, new Vector2(X, Y), Quaternion.identity, GameObject.Find("Image").transform);
+            duply.name = je.ToString();
             duply.SetActive(false);
+            Garr[St] = duply;
+            je++;
         }
-    }
-    private void SongCloak(float BPM) {
-        GameObject Text2 = GameObject.Find("Text2");
-
-        Ticks = Time.deltaTime * (BPM / 60) / 4;
-        TickTime += Ticks;
-        RealTime += Time.deltaTime;
-
-        LineOBJ.transform.Rotate(new Vector3(0, 0, -Ticks * 360));
-
-        Text2.GetComponent<Text>().text =
-            "Tick : " + TickTime.ToString("F2") +
-            ", Real :" + RealTime.ToString("F2") +
-            ", BPM :" + BPM;
+        NotePaper.Add(Garr);
     }
 }
