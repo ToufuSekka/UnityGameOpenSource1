@@ -1,6 +1,6 @@
 #SongName:StreamingLife;
 #Composer:DQ; 
-#Tempo:135;
+#Tempo:67.5;
 
 @001:1:000A000A;
 @001:2:0A000A00;

@@ -34,21 +34,21 @@ public class ColiTrash02 : MonoBehaviour{
         Text.GetComponent<Text>().text =
             "Tick : " + ComCloak.MetroClok +
             ", BPM :" + Tempo;
-
+        
         for (int p = 0; p < NotePaper.Count; p++) {
             for (int q = 0; q < NotePaper[p].Length; q++) {
-                if (NotePaper[p][q].Equals(null)) {
+                if (NotePaper[p][q] == null) {
                     continue;
-                } else if (NotePaper[p][q].GetComponent<Notes>().TicPerf - 0.5 < ComCloak.MetroClok) {
+                } else if (NotePaper[p][q].GetComponent<Notes>().TicPerf - 0.5 < ComCloak.MetroClok)
                     NotePaper[p][q].SetActive(true);
-                }
             }
         }
+        
     }
 
     //TestSorter
     private void Reading() {
-        FullData = Resources.Load("SongData/Test") as TextAsset;
+        FullData = Resources.Load("SongData/Test3") as TextAsset;
         StringReader strReader = new StringReader(FullData.text);
         string LocalLIne = "";
 
@@ -71,7 +71,7 @@ public class ColiTrash02 : MonoBehaviour{
                 case "#Composer":
                     break;
                 case "#Tempo":
-                    Tempo = int.Parse(lines[1]);
+                    Tempo = float.Parse(lines[1]);
                     break;
             }
         }
@@ -95,19 +95,20 @@ public class ColiTrash02 : MonoBehaviour{
         float MinRad = 100, DefRad = 40;
 
         for (int St = 0 ;St < NType.Length ;St++ ){
-            LenDiv = OriginOne / NType.Length;
-            outOBJ.GetComponent<Notes>().ScoreLIne = ScoNo;
-            outOBJ.GetComponent<Notes>().ChordLine = ChoNo;
-            outOBJ.GetComponent<Notes>().TicPerf = ScoNo + (LenDiv * St);
-            outOBJ.GetComponent<Notes>().NoteData = NType[St];
-
-            X = (MinRad + (DefRad * ChoNo)) * Mathf.Cos(((TolCir * St) - 180) * (Mathf.PI / -360));
-            Y = (MinRad + (DefRad * ChoNo)) * Mathf.Sin(((TolCir * St) - 180) * (Mathf.PI / -360));
-            duply = Instantiate(outOBJ, new Vector2(X, Y), Quaternion.identity, GameObject.Find("Image").transform);
-            duply.name = je.ToString();
-            duply.SetActive(false);
-            Garr[St] = duply;
-            je++;
+            if (NType[St] != '0') {
+                LenDiv = OriginOne / NType.Length;
+                outOBJ.GetComponent<Notes>().ScoreLIne = ScoNo;
+                outOBJ.GetComponent<Notes>().ChordLine = ChoNo;
+                outOBJ.GetComponent<Notes>().TicPerf = ScoNo + (LenDiv * St);
+                outOBJ.GetComponent<Notes>().NoteData = NType[St];
+                X = (MinRad + (DefRad * ChoNo)) * Mathf.Cos(((TolCir * St) - 180) * (Mathf.PI / -360));
+                Y = (MinRad + (DefRad * ChoNo)) * Mathf.Sin(((TolCir * St) - 180) * (Mathf.PI / -360));
+                duply = Instantiate(outOBJ, new Vector2(X, Y), Quaternion.identity, GameObject.Find("Image").transform);
+                duply.name = je.ToString();
+                duply.SetActive(false);
+                Garr[St] = duply;
+                je++;
+            }
         }
         NotePaper.Add(Garr);
     }
