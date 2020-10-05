@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ColiTrash02 : MonoBehaviour{
-    int testNumber = 0;
     int je = 0;
     float X, Y, Stan, NVal;
     float Tempo;

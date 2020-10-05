@@ -33,7 +33,6 @@ public class NewBehaviourScript : MonoBehaviour{
     }
 
     //custom
-
     public void Clicked() {
         if(!FB.IsLoggedIn)
             FB.LogInWithReadPermissions(new List<string> { "public_profile" }, AuthCallback);
