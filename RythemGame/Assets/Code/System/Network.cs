@@ -5,13 +5,16 @@ using Facebook.Unity;
 
 public class Network : MonoBehaviour{
 
+    private string Moss ="";
+
     public void NetConnect() {
         FacebookINIT();
     }
 
     //BaceBookSys
     public void FacebookLogOn() {
-        if (!FB.IsLoggedIn) FB.LogInWithReadPermissions(new List<string> {"public_profile"},AuthCallback);
+        if (!FB.IsLoggedIn) FB.LogInWithReadPermissions(new List<string> { "public_profile" }, AuthCallback);
+        else Debug.Log("Already Logged in");//PassPage...
     }
 
     private void FacebookINIT() {
@@ -40,9 +43,15 @@ public class Network : MonoBehaviour{
             Debug.Log(result.Error.ToString());
             //result.Error.GetHashCode();
             return;
+        }
+
+        if (PlayerPrefs.HasKey("UserID")) {
+            Debug.Log("Bring : " + PlayerPrefs.GetString("UserID"));
         } else {
             var Token = AccessToken.CurrentAccessToken;
             Debug.Log(Token.ToString());
+            gameObject.AddComponent<ComData>().PrefabsWrite(Token.UserId);
+            Debug.Log("UserID : " + Token.UserId.ToString());
         }
     }
 }

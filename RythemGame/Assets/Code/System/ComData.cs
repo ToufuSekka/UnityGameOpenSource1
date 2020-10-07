@@ -4,11 +4,27 @@ using UnityEngine;
 
 public class ComData : MonoBehaviour{
 
-    public void Read() {
+    public static string MossWriter="";
+
+    public void MossReader() {
 
     }
 
-    public void Write() {
+    //JSON
+    public void JsonRead() {
 
+    }
+
+    public void JsonWrite() {
+
+    }
+
+    //prefabs
+    public void PrefabsRead() {
+
+    }
+
+    public void PrefabsWrite(string Data) {
+        PlayerPrefs.SetString("UserID",Data);
     }
 }

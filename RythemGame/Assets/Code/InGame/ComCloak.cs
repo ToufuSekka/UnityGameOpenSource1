@@ -12,7 +12,7 @@ public class ComCloak : MonoBehaviour{
 
     private void Start() {
         ClokLine = GameObject.Find("Line");
-        MetroClok = -2.0f;
+        MetroClok = 0f;
     }
 
     public void SongCloak(float BPM) {

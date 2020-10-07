@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ColiTrash02 : MonoBehaviour{
-    int je = 0;
+    int je = 0, Score;
     float X, Y, Stan, NVal;
     float Tempo;
     Notes Not;
@@ -13,7 +13,7 @@ public class ColiTrash02 : MonoBehaviour{
     TextAsset FullData;
     GameObject outOBJ, duply,vid;
     GameObject LineOBJ, Text;
-
+    GameObject TestScore;
     public static List<GameObject[]> NotePaper = new List<GameObject[]>();
 
     void Start() {
@@ -21,6 +21,7 @@ public class ColiTrash02 : MonoBehaviour{
         LineOBJ = GameObject.Find("Line");
         Text = GameObject.Find("Text2");
         vid = GameObject.Find("AThings");
+
         LineOBJ.AddComponent<ComCloak>();
         Reading();
     }
@@ -29,10 +30,15 @@ public class ColiTrash02 : MonoBehaviour{
         if (Time.frameCount % 60 == 0) System.GC.Collect();
 
         LineOBJ.GetComponent<ComCloak>().SongCloak(Tempo);
+        float us = 0;
+        if (ScoreT.perfect == 0) 
+            us = 0;
+        else
+            us = ScoreT.TScore / ScoreT.perfect;
 
         Text.GetComponent<Text>().text =
-            "Tick : " + ComCloak.MetroClok +
-            ", BPM :" + Tempo;
+            "Tick : " + ComCloak.MetroClok + ", BPM :" + Tempo +
+            "\r\n Score : " + ScoreT.TScore +", " +"Percent : "+ us;
         
         for (int p = 0; p < NotePaper.Count; p++) {
             for (int q = 0; q < NotePaper[p].Length; q++) {
@@ -42,12 +48,11 @@ public class ColiTrash02 : MonoBehaviour{
                     NotePaper[p][q].SetActive(true);
             }
         }
-        
     }
 
     //TestSorter
     private void Reading() {
-        FullData = Resources.Load("SongData/Test3") as TextAsset;
+        FullData = Resources.Load("SongData/Test4") as TextAsset;
         StringReader strReader = new StringReader(FullData.text);
         string LocalLIne = "";
 

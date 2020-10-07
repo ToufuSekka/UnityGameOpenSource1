@@ -639,8 +639,9 @@ GameObject:
   - component: {fileID: 1583426388}
   - component: {fileID: 1583426387}
   - component: {fileID: 1583426386}
-  - component: {fileID: 1583426385}
   - component: {fileID: 1583426390}
+  - component: {fileID: 1583426384}
+  - component: {fileID: 1583426385}
   m_Layer: 5
   m_Name: AThings
   m_TagString: Untagged
@@ -648,7 +649,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1583426385
+--- !u!114 &1583426384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -656,6 +657,18 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583426383}
   m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c9fc48d0dff034db6d4b75b5cd8e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1583426385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583426383}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 027d93652d1aad24dbc238878b83291f, type: 3}
   m_Name: 
