@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName ="NormalUnit", menuName = "NormalUnitData")]
-public class NormalUnit : ScriptableObject {
+public class NormalUnit{
 
     //Basic Data
     public string Name = null, Description = null;

@@ -29,6 +29,5 @@ public class UnitSpecifics : MonoBehaviour {
             }
             r++;
         }
-        Debug.Log("Called " + DataPather.FileData);
     }
 }

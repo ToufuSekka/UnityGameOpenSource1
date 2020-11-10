@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class ButCntl : MonoBehaviour{
     Button btn;
-
+    string TestClicked="";
     //Callback
 
     //customFunc::public
 
     //void
     public void Gate(string SceneName) {
-        DataPather.SceneSaver.Push(SceneManager.GetActiveScene().name);
+        DatCntl.ScreenSaver.Push(SceneManager.GetActiveScene().name);
         if(SceneName == null || SceneName.Equals(""))
             SceneManager.LoadScene(BasicBtnName());
         else
@@ -22,14 +22,14 @@ public class ButCntl : MonoBehaviour{
     }
 
     public void BAECntl() {
-        if (DataPather.SceneSaver.Count.Equals(0))
+        if (DatCntl.ScreenSaver.Count.Equals(0))
             Exit();
         else
             BackDoor();
     }
 
     public void BackDoor() {
-        SceneManager.LoadScene(DataPather.SceneSaver.Pop());
+        SceneManager.LoadScene(DatCntl.ScreenSaver.Pop());
     }
 
     public void Exit() {
@@ -37,8 +37,8 @@ public class ButCntl : MonoBehaviour{
     }
 
     public void SelectUnit() {
-        DataPather.FileData = GetComponent<UnitView>().FileName;
-        Debug.Log(DataPather.FileData + " is Clicked");
+        TestClicked = GetComponent<UnitView>().FileName;
+        Debug.Log(TestClicked + " is Clicked");
         Gate("Unit_Dtailer");
     }
 

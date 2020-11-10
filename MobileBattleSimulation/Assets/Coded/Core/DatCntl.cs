@@ -6,6 +6,8 @@ using System.IO;
 using System.Xml;
 
 public class DatCntl{
+    public static Stack<string> ScreenSaver = new Stack<string>();
+
     TextAsset TA;
 
     DirectoryInfo di;
@@ -14,7 +16,7 @@ public class DatCntl{
     List<object> Datas = new List<object>();
 
     string BigPath;
-
+    
     public List<object> FilesView(string Type, string[] dataName) {
         BigPath = PathSwichter(Type);
 
